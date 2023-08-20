@@ -20,15 +20,13 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-			_putchar(*format);
-			chara_print++;
+			chara_print += _putchar(*format);
 		} else
 		{
 			format++;/*got to next char to get  conversion specifiers */
 			if (*format == '%')/*here we handle if %%*/
 			{
-				_putchar(*format);
-				chara_print++;
+				chara_print += _putchar(*format);
 			} else
 			{
 				char c;
