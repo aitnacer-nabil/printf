@@ -1,11 +1,41 @@
 #include "main.h"
 
 /**
+ * handle_specifiers - a function handle S C %
+ * @format: specifier char
+ * @ch: var arg char for c
+ * @str: var arg string for s
+ *
+ * Return: increment
+ */
+int handle_specifiers(char format, int ch, char *str)
+{
+	char c;
+	int count = 0;
+
+	switch (format)
+	{
+	case 'c':
+		c = ch;
+		count += c_specifier(c);
+		break;
+	case 's':
+		count += s_specifier(str);
+		break;
+	default:
+		count += c_specifier('%');
+		count += c_specifier(format);
+		break;
+	}
+	return (count);
+}
+
+/**
  * _printf -  a function that produces output according to a format
  * @format: is a character string.
  *
  * Return: the number of characters printed
-*/
+ */
 
 int _printf(const char *format, ...)
 {
@@ -21,32 +51,23 @@ int _printf(const char *format, ...)
 		if (*format != '%' && *format != '\0')
 		{
 			chara_print += _putchar(*format);
-		} else
+		}
+		else
 		{
-			format++;/*got to next char to get  conversion specifiers */
-			if (*format == '%')/*here we handle if %%*/
+			format++;			/*got to next char to get  conversion specifiers */
+			if (*format == '%') /*here we handle if %%*/
 			{
 				chara_print += _putchar(*format);
-			} else
+			}
+			else
 			{
-				char c;
-
-				switch (*format)
-				{
-				case 'c':
-					c = va_arg(list_of_args, int);
-
-					chara_print += c_specifier(c);
-					break;
-				case 's':
-					chara_print += s_specifier(va_arg(list_of_args, char*));
-					break;
-				}
+				handle_specifiers(*format,
+				va_arg(list_of_args, int),
+				va_arg(list_of_args, char *));
 			}
 		}
 		format++;
 	}
 	va_end(list_of_args);
 	return (chara_print);
-
 }

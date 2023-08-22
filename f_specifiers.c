@@ -10,11 +10,12 @@
  */
 int c_specifier(char c)
 {
-	if (c != '\0')
+	if (c >= 32 && c <= 126)
 	{
 		_putchar(c);
 		return (1);
 	}
+	
 	return (0);
 }
 
@@ -25,7 +26,8 @@ int c_specifier(char c)
  *
  */
 int s_specifier(char *s)
-{
+{	
+	
 	int len = str_len(s);
 
 	if (len > 0)
