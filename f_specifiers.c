@@ -10,13 +10,7 @@
  */
 int c_specifier(char c)
 {
-	if (c >= 32 && c <= 126)
-	{
-		_putchar(c);
-		return (1);
-	}
-
-	return (0);
+	return (_putchar(c));
 }
 
 /**

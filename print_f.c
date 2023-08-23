@@ -16,8 +16,9 @@ int handle_specifiers(char format, int ch, char *str)
 	switch (format)
 	{
 	case 'c':
+		printf("%d",ch);
 		c = ch;
-		count += c_specifier(c);
+		count += _putchar(c);
 		break;
 	case 's':
 		count += s_specifier(str);
