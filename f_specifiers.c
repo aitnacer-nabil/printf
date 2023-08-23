@@ -15,7 +15,7 @@ int c_specifier(char c)
 		_putchar(c);
 		return (1);
 	}
-	
+
 	return (0);
 }
 
@@ -26,14 +26,20 @@ int c_specifier(char c)
  *
  */
 int s_specifier(char *s)
-{	
-	
-	int len = str_len(s);
+{
+	int i = 0;
+	int count = 0;
 
-	if (len > 0)
+	if (s == NULL)
 	{
-		_puts(s, len);
-		return (len);
+		s_specifier("(null)");
+		return count;
 	}
-	return (0);
+	while (s[i])
+	{
+		_putchar(s[i]);
+		i++;
+		count++;
+	}
+	return (count);
 }

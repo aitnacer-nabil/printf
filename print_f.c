@@ -23,8 +23,8 @@ int handle_specifiers(char format, int ch, char *str)
 		count += s_specifier(str);
 		break;
 	default:
-		count += c_specifier('%');
-		count += c_specifier(format);
+		count += _putchar('%');
+		count += _putchar(format);
 		break;
 	}
 	return (count);
@@ -61,9 +61,9 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				handle_specifiers(*format,
-				va_arg(list_of_args, int),
-				va_arg(list_of_args, char *));
+				chara_print += handle_specifiers(*format,
+												 va_arg(list_of_args, int),
+												 va_arg(list_of_args, char *));
 			}
 		}
 		format++;
