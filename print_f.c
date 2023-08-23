@@ -16,7 +16,6 @@ int handle_specifiers(char format, int ch, char *str)
 	switch (format)
 	{
 	case 'c':
-		printf("%d",ch);
 		c = ch;
 		count += _putchar(c);
 		break;
@@ -62,9 +61,11 @@ int _printf(const char *format, ...)
 			}
 			else
 			{
-				chara_print += handle_specifiers(*format,
-												 va_arg(list_of_args, int),
-												 va_arg(list_of_args, char *));
+				int ch = va_arg(list_of_args, int);
+				char *str = va_arg(list_of_args, char *);
+
+				chara_print += handle_specifiers(*format, ch, str);
+
 			}
 		}
 		format++;
