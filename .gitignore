@@ -1,5 +1,5 @@
 checkBetty.md
-checkStyle.sh
+
 *.out
 main.c
 testmain.txt
